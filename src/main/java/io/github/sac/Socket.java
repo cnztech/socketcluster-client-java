@@ -159,6 +159,14 @@ public class Socket extends Emitter {
             @Override
             public void onFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
 
+                if (frame.getPayloadText().equalsIgnoreCase("#1")) {
+                    /**
+                     *  PING-PONG logic goes here
+                     */
+                    websocket.sendText("#2");
+                    super.onFrame(websocket, frame);
+                    return;
+                }
                     JSONObject object = new JSONObject(frame.getPayloadText());
                     /**
                      * Message retrieval mechanism goes here
