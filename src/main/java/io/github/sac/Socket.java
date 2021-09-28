@@ -251,7 +251,12 @@ public class Socket extends Emitter {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ws.sendText(eventObject.toString());
+
+                try {
+                    ws.sendText(eventObject.toString());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
         });
         return this;
@@ -271,7 +276,12 @@ public class Socket extends Emitter {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ws.sendText(eventObject.toString());
+
+                try {
+                    ws.sendText(eventObject.toString());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
         });
         return this;
