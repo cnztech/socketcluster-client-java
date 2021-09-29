@@ -264,7 +264,6 @@ public class Socket extends Emitter {
 
 
     public Socket emit(final String event, final Object object, final Ack ack) {
-
         EventThread.exec(new Runnable() {
             public void run() {
                 JSONObject eventObject = new JSONObject();
@@ -453,7 +452,11 @@ public class Socket extends Emitter {
     public void connect() {
         try {
             ws = factory.createSocket(URL);
+        } catch (IOException e) {
+            logger.severe(e.toString());
+        }
 
+        try {
             ws.addExtension("permessage-deflate; client_max_window_bits");
             for (Map.Entry<String, String> entry : headers.entrySet()) {
                 ws.addHeader(entry.getKey(), entry.getValue());
@@ -500,14 +503,19 @@ public class Socket extends Emitter {
                 listener.onConnectError(Socket.this, e);
                 reconnect();
             }
-        } catch (IOException e) {
-            logger.severe(e.toString());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 
     public void connectAsync() {
         try {
             ws = factory.createSocket(URL);
+        } catch (IOException e) {
+            logger.severe(e.toString());
+        }
+
+        try {
             ws.addExtension("permessage-deflate; client_max_window_bits");
             for (Map.Entry<String, String> entry : headers.entrySet()) {
                 ws.addHeader(entry.getKey(), entry.getValue());
@@ -515,8 +523,8 @@ public class Socket extends Emitter {
 
             ws.addListener(adapter);
             ws.connectAsynchronously();
-        } catch (IOException e) {
-            logger.severe(e.toString());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 
