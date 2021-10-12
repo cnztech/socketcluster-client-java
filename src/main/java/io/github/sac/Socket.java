@@ -300,7 +300,12 @@ public class Socket extends Emitter {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ws.sendText(subscribeObject.toString());
+
+                try {
+                    ws.sendText(subscribeObject.toString());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
         });
         return this;
@@ -325,7 +330,12 @@ public class Socket extends Emitter {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ws.sendText(subscribeObject.toString());
+
+                try {
+                    ws.sendText(subscribeObject.toString());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
         });
         return this;
@@ -342,7 +352,13 @@ public class Socket extends Emitter {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ws.sendText(subscribeObject.toString());
+
+
+                try {
+                    ws.sendText(subscribeObject.toString());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
         });
         return this;
@@ -361,7 +377,12 @@ public class Socket extends Emitter {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ws.sendText(subscribeObject.toString());
+
+                try {
+                    ws.sendText(subscribeObject.toString());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
         });
         return this;
@@ -381,7 +402,12 @@ public class Socket extends Emitter {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ws.sendText(publishObject.toString());
+
+                try {
+                    ws.sendText(publishObject.toString());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -403,7 +429,12 @@ public class Socket extends Emitter {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                ws.sendText(publishObject.toString());
+
+                try {
+                    ws.sendText(publishObject.toString());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -423,7 +454,12 @@ public class Socket extends Emitter {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        ws.sendText(object.toString());
+
+                        try {
+                            ws.sendText(object.toString());
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
             }
